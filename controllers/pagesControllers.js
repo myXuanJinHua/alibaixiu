@@ -4,16 +4,16 @@
 module.exports = {
     //获取前台页面并渲染
     showIndex(req, res) {
-        res.render('index.ejs')
+        res.render('index')
     },
     showDetail(req, res) {
-        res.render('detail.ejs')
+        res.render('detail')
     },
     showList(req, res) {
-        res.render('list.ejs')
+        res.render('list')
     },
     //获取后台页面并渲染
     showAdminIndex(req, res) {
-        res.render('admin/index.ejs')
+        res.render('admin/index')
     }
 }

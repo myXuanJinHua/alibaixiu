@@ -8,8 +8,11 @@ const pageControllers = require('../controllers/pagesControllers')
 // 创建router的实例对象
 const router = express.Router()
 
+//向外暴露
 //前台页面的判断,调用方法
-router.get('/', pageControllers.showIndex)
+module.exports = router.get('/', (req, res) => {
+    pageControllers.showIndex(req, res)
+})
     .get('/detail', pageControllers.showDetail)
     .get('/list', pageControllers.showList)
 
@@ -17,6 +20,3 @@ router.get('/', pageControllers.showIndex)
     //
     .get('/admin', pageControllers.showAdminIndex)
 
-
-//向外暴露
-module.exports = router

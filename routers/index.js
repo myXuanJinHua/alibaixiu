@@ -4,6 +4,8 @@
 const express = require('express')
 //引入pageControllers的模块
 const pageControllers = require('../controllers/pagesControllers')
+//引入postsControllers的模块
+const postsControllers = require('../controllers/postsControllers')
 
 // 创建router的实例对象
 const router = express.Router()
@@ -30,6 +32,9 @@ module.exports = router.get('/', (req, res) => {
     .get('/admin/slides', pageControllers.showAdminSlides)
     .get('/admin/users', pageControllers.showAdminUsers)
 
+
+    //
+    .get('/admin/getposts', postsControllers.getPosts)
 
 
 

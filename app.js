@@ -1,5 +1,7 @@
 //引入express
 const express = require('express')
+//引入body-parser模块
+const bodyParser = require('body-parser')
 
 //引入加载静态页面的router模块
 const router = require('./routers/index')
@@ -16,6 +18,9 @@ app.listen(3004, () => {
 app.set('view engine', 'ejs')
 //设置模板目录
 app.set('/views', 'views')
+
+//注册取消body-parser默认的解析
+app.use(bodyParser.urlencoded({ extended: false }))
 
 //添加静态资源
 //添加css,固定图片的静态资源

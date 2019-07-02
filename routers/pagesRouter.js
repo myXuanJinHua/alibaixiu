@@ -19,4 +19,3 @@ module.exports = router.get('/', (req, res) => {
     //后台的页面的判断,调用了方法
     //
     .get('/admin', pageControllers.showAdminIndex)
-

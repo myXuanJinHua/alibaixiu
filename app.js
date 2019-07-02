@@ -2,7 +2,7 @@
 const express = require('express')
 
 //引入加载静态页面的router模块
-const router = require('./routers/pagesRouter')
+const router = require('./routers/index')
 
 //创建express的实例对象
 const app = express()

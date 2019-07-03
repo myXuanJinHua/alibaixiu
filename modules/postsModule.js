@@ -8,7 +8,8 @@ let conn = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '3952427',
-    database: 'baixiu'
+    database: 'baixiu',
+    dateStrings: true
 })
 
 // 打开数据库
@@ -23,7 +24,7 @@ module.exports = {
         from posts
         inner join users on posts.user_id=users.id
         inner join categories on posts.category_id=categories.id
-        limit ${(params.pageSize - 1) * pageCount},${pageCount}`
+        limit ${(params.pagesize - 1) * params.pagecount},${params.pagecount}`
         //pageSize:页码数  pageCount:每页的数据条数
         conn.query(sql, (err, result) => {
             if (err) return callback(err)

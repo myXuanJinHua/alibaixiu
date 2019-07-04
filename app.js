@@ -21,7 +21,7 @@ app.set('/views', 'views')
 
 //注册取消body-parser默认的解析
 app.use(bodyParser.urlencoded({ extended: false }))
-
+app.use(bodyParser.json())
 //添加静态资源
 //添加css,固定图片的静态资源
 app.use('/assets', express.static('assets'))

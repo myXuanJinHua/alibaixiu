@@ -19,5 +19,19 @@ module.exports = {
                 "data": result
             })
         })
+    },
+    delpost(req, res) {
+        // console.log(req.query)
+        let { id } = req.query
+        postsModule.delpost(id, (err) => {
+            if (err) return res.json({
+                code: 1,
+                msg: '删除数据失败'
+            })
+            res.json({
+                code: 0,
+                msg: '数据删除成功'
+            })
+        })
     }
 }

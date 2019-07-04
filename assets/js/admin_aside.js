@@ -16,7 +16,7 @@ $(function () {
     } else {
         routername = href.slice(href.lastIndexOf('/') + 1, num)
     }
-    console.log(routername)
+    // console.log(routername)
 
     //当选中文章ul里的3个选项,添加修改样式,展开菜单
     if (routername == 'posts' || routername == 'post-add' || routername == 'categories') {
@@ -27,4 +27,9 @@ $(function () {
     if (routername == 'nav-menus' || routername == 'slides' || routername == 'settings') {
         $('#menu-settings').addClass('in').attr('aria-expanded', true)
     }
+
+    //做选中高亮的效果
+    //通过active的类来设置  使用
+    $('li').removeClass('active')   //$('li') 可以选中所有的li 妙啊妙
+    $('#' + routername).addClass('active')    //字符串加上变量也是字符串
 })

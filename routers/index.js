@@ -33,9 +33,10 @@ module.exports = router.get('/', (req, res) => {
     .get('/admin/users', pageControllers.showAdminUsers)
 
 
-    //
+    //判断后台页面获取所有文章的数据接口
     .get('/admin/getposts', postsControllers.getPosts)
-
+    //点击删除后的删除数据接口
+    .get('/delpost', postsControllers.delpost)
 
 
 

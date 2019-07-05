@@ -21,8 +21,8 @@ module.exports = {
     getPosts(params, callback) {
         //写sql语句   因为查询语句有关键字的严格要求所以要把sql语句进行隔开后面再拼接,拼接需要在后面 前面(你懂的)加上空格
         //还有因为字段那里有重复,就是
-        console.log('进入了获取modules')
-        console.log(params)
+        // console.log('进入了获取modules')
+        // console.log(params)
         let sql = `select
         posts.title,users.nickname,categories.name,posts.created,posts.status,posts.id
         from posts
@@ -40,17 +40,17 @@ module.exports = {
         sql += ` order by posts.id desc 
         limit ${(params.pageNum - 1) * params.pageSize},${params.pageSize}`
         //pageNum:当前页码数  pageSize:每页显示的数据条数
-        console.log('第一次的sql的执行完毕')
+        // console.log('第一次的sql的执行完毕')
         conn.query(sql, (err, result) => {
-            console.log('打印第一次出错', err)
+            // console.log('打印第一次出错', err)
             if (err) return callback(err)
-            console.log('准备第二次sql')
+            // console.log('准备第二次sql')
             sql = 'select count(*) count from posts'   //获取总记录数
-            console.log('第二次sql成功')
+            // console.log('第二次sql成功')
             conn.query(sql, (err1, data) => {
-                console.log('第二次', err)
+                // console.log('第二次', err)
                 if (err1) return callback(err1)
-                console.log(data);  //查询data的 是一个数组
+                // console.log(data);  //查询data的 是一个数组
                 callback(null, { result: result, total: data[0].count })     //返回两个结果 ,以对象的形式  一个是查询到的结果result  一个是查询出的总记录数
             })
         })

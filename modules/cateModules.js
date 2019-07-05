@@ -15,6 +15,7 @@ let conn = mysql.createConnection({
 conn.connect()
 
 module.exports = {
+    //获取所有分类的数据
     getAllCateList(callback) {
         let sql = 'select * from categories'
         conn.query(sql, (err, result) => {

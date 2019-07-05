@@ -98,22 +98,24 @@ $(function () {    //入口函数
         // console.log($(this).data('id'))
         // 获取id
         let id = $(this).data('id');
-        $.ajax({
-            type: 'get',
-            url: '/delposts',
-            data: {
-                id: id
-            },
-            datatype: 'json',
-            success: function (res) {
-                console.log(res.code)
-                if (res.code == 200) {
-                    console.log('成功删除页面')
-                    //重新刷新页面
-                    init()
+        if (window.confirm('确定删除此项目')) {
+            $.ajax({
+                type: 'get',
+                url: '/delposts',
+                data: {
+                    id: id
+                },
+                datatype: 'json',
+                success: function (res) {
+                    // console.log(res.code)
+                    if (res.code == 200) {
+                        // console.log('成功删除页面')
+                        //重新刷新页面
+                        init()
+                    }
                 }
-            }
-        })
+            })
+        }
     })
 
 

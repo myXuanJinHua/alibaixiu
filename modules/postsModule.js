@@ -50,7 +50,8 @@ module.exports = {
     },
     //根据id来删除对应的数据
     delpost(id, callback) {
-        let sql = `delete from posts where id = ` + id
+        console.log(123123)
+        let sql = 'delete from posts where id = ' + id
         conn.query(sql, (err) => {
             if (err) return callback(err)
             callback(null)

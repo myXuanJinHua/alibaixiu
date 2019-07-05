@@ -6,6 +6,8 @@ const express = require('express')
 const pageControllers = require('../controllers/pagesControllers')
 //引入postsControllers的模块
 const postsControllers = require('../controllers/postsControllers')
+//引入catecontrollers模块
+const cateControllers = require('../controllers/catecontrollers')
 
 // 创建router的实例对象
 const router = express.Router()
@@ -36,8 +38,9 @@ module.exports = router.get('/', (req, res) => {
     //判断后台页面获取所有文章的数据接口
     .get('/admin/getposts', postsControllers.getPosts)
     //点击删除后的删除数据接口
-    .get('/delpost', postsControllers.delpost)
-
+    .get('/delposts', postsControllers.delpost)
+    //数据的筛选,获取所有分类的数据
+    .get('/getAllCateList', cateControllers.getAllCateList)
 
 
 

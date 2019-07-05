@@ -20,16 +20,17 @@ module.exports = {
             })
         })
     },
-    delpost(req, res) {
-        // console.log(req.query)
+    delpost(req, res) {    //删除数据
+        console.log("posts控制器")
         let { id } = req.query
+        console.log(id)
         postsModule.delpost(id, (err) => {
             if (err) return res.json({
-                code: 1,
+                code: 400,
                 msg: '删除数据失败'
             })
             res.json({
-                code: 0,
+                code: 200,
                 msg: '数据删除成功'
             })
         })

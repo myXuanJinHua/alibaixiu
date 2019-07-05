@@ -27,5 +27,7 @@ app.use(bodyParser.json())
 app.use('/assets', express.static('assets'))
 //添加经常更新图片的资源
 app.use('/uploads', express.static('uploads'))
+//添加node_modules 的静态资源
+app.use('/node_modules', express.static('node_modules'))
 // 添加路由配置
 app.use(router)

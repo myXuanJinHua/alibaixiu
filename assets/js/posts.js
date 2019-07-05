@@ -57,13 +57,13 @@ $(function () {    //入口函数
             },
             datatype: 'json',
             success: function (res) {
-                console.log(res)  //获取响应数据
+                // console.log(res)  //获取响应数据
                 // console.log(res.data)
                 let htmlStr = template('postListTmp', res.data)
                 //生成所有数据表格结构
                 $('tbody').html(htmlStr)
                 //调用函数 生成分页结构
-                setPage(Math.ceil(res.data.totale / pageSize))
+                setPage(Math.ceil(res.data.total / pageSize))
             }
         })
 

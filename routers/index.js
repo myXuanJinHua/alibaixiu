@@ -8,6 +8,9 @@ const pageControllers = require('../controllers/pagesControllers')
 const postsControllers = require('../controllers/postsControllers')
 //引入catecontrollers模块
 const cateControllers = require('../controllers/catecontrollers')
+//引入uploadControllers  模块
+const uploadControllers = require('../controllers/uploadControllers')
+
 
 // 创建router的实例对象
 const router = express.Router()
@@ -42,5 +45,6 @@ module.exports = router.get('/', (req, res) => {
     //数据的筛选,获取所有分类的数据
     .get('/getAllCateList', cateControllers.getAllCateList)
 
-
+    //上传文件数据
+    .post('/uploadFile', uploadControllers.uploadFile)
 

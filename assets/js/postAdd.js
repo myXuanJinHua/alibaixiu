@@ -38,15 +38,15 @@ $(function () {
                     //把响应回来的文件名存到input 隐藏域内
                     $('[name=feature]').val(res.img)
                     //实现预览
-                    $('#thumbnail').attr('src', '/uploads' + res.img).show()
+                    $('.thumbnail').attr('src', '/uploads' + res.img).show()
                 }
             }
         })
     })
 
     //做一个富文本框的效果 做好了引入后
-    //初始化富文本框已作覆盖textarea
-    CKEDITOR.replace('#content')
+    //初始化富文本框已作覆盖textarea 
+    CKEDITOR.replace('content')  //里面的id不用#+id  直接id
 
     // 给保存修改按钮添加点击事件 实现文章的新增  需要1:获取到form里的内容,包括上传文件返回来得到的路径,
     //还有富文本框的数据,这个需要把富文本框的数据与textarea的数据同步
@@ -61,7 +61,7 @@ $(function () {
         //把页面表单的数据上传到服务器
         $.ajax({
             type: 'post',
-            url: 'addPostContent',
+            url: '/addPostContent',
             data: $('form').serialize(),
             dataType: 'json',
             success: function (res) {

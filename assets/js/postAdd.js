@@ -25,7 +25,7 @@ $(function () {
         //追加参数
         formadata.append('img', myfile)
 
-        // 发送ajax请求
+        // 发送ajax请求实现文件上传
         $.ajax({
             type: 'post',
             url: '/uploadFile',
@@ -43,6 +43,35 @@ $(function () {
             }
         })
     })
+
+    //做一个富文本框的效果 做好了引入后
+    //初始化富文本框已作覆盖textarea
+    CKEDITOR.replace('#content')
+
+    // 给保存修改按钮添加点击事件 实现文章的新增  需要1:获取到form里的内容,包括上传文件返回来得到的路径,
+    //还有富文本框的数据,这个需要把富文本框的数据与textarea的数据同步
+
+    $('.btn-primary').on('click', function (event) {
+        //阻止默认事件
+        event.preventDefault()
+        //同步富文本框与textarea的数据
+        CKEDITOR.instances.content.updataElement()
+        // console.log('富文本框的数据', $('form').serialize())
+
+        //把页面表单的数据上传到服务器
+        $.ajax({
+            type: 'post',
+            url: 'addPostContent',
+            data: $('form').serialize(),
+            dataType: 'json',
+            success: function (res) {
+                console.log('表单数据上传到服务器之后响应回来的数据', res)
+            }
+        })
+
+    })
+
+
 
 
 })

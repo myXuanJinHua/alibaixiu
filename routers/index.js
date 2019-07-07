@@ -10,6 +10,8 @@ const postsControllers = require('../controllers/postsControllers')
 const cateControllers = require('../controllers/catecontrollers')
 //引入uploadControllers  模块
 const uploadControllers = require('../controllers/uploadControllers')
+//引入commentControllers 模块
+const commentControllers = require('../controllers/commentControllers')
 
 
 // 创建router的实例对象
@@ -48,3 +50,5 @@ module.exports = router.get('/', (req, res) => {
     //上传文件数据
     .post('/uploadFile', uploadControllers.uploadFile)
 
+    //获取评论数据
+    .get('/getComments', commentControllers.getCommentsLIst)

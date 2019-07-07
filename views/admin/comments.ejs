@@ -49,30 +49,6 @@
             <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
           </td>
         </tr>
-        <tr>
-          <td class="text-center"><input type="checkbox"></td>
-          <td>大大</td>
-          <td>楼主好人，顶一个</td>
-          <td>《Hello world》</td>
-          <td>2016/10/07</td>
-          <td>已批准</td>
-          <td class="text-center">
-            <a href="post-add.html" class="btn btn-warning btn-xs">驳回</a>
-            <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-          </td>
-        </tr>
-        <tr>
-          <td class="text-center"><input type="checkbox"></td>
-          <td>大大</td>
-          <td>楼主好人，顶一个</td>
-          <td>《Hello world》</td>
-          <td>2016/10/07</td>
-          <td>已批准</td>
-          <td class="text-center">
-            <a href="post-add.html" class="btn btn-warning btn-xs">驳回</a>
-            <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-          </td>
-        </tr>
       </tbody>
     </table>
   </div>
@@ -80,4 +56,28 @@
 
 <%- include('./layout/aside.ejs')%>
 
-<<%- include('./layout/footer.ejs')%>
+<%- include('./layout/footer.ejs')%>
+<script src="../../node_modules/art-template/lib/template-web.js"></script>
+<script type="text/template" id="commentTmp">
+  {{each data}}
+  <tr>
+    <td class="text-center"><input type="checkbox"></td>
+      <td>{{$value.author}}</td>
+      <td>{{$value.content}}</td>
+      <td>{{$value.title}}</td>
+      <td>{{$value.created}}</td>
+      <td>
+        {{if $value.status=='approved'}}
+        未批准
+        {{else}}
+        已批准
+        {{/if}}
+      </td>
+      <td class="text-center">
+        <a href="post-add.html" class="btn btn-warning btn-xs">驳回</a>
+        <a href="javascript:;" class="btn btn-danger btn-xs" data-id="{{$value.id}}">删除</a>
+    </td>
+  </tr>
+  {{/each}}
+</script>
+<script src="/assets/js/comments.js"></script>

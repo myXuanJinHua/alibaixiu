@@ -12,6 +12,8 @@ const cateControllers = require('../controllers/catecontrollers')
 const uploadControllers = require('../controllers/uploadControllers')
 //引入commentControllers 模块
 const commentControllers = require('../controllers/commentControllers')
+//引入用户登录controller 模块
+const userLoginControllers = require('../controllers/userLoginControllers')
 
 
 // 创建router的实例对象
@@ -52,3 +54,8 @@ module.exports = router.get('/', (req, res) => {
 
     //获取评论数据
     .get('/getComments', commentControllers.getCommentsLIst)
+
+
+
+    //用户登录
+    .post('/login', userLoginControllers.login)

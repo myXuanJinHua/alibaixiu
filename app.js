@@ -44,8 +44,7 @@ app.use(session({
 app.use('/assets', express.static('assets'))
 //添加经常更新图片的资源
 app.use('/uploads', express.static('uploads'))
-//添加node_modules 的静态资源
-app.use('/node_modules', express.static('node_modules'))
+
 
 //使用这个中间件.每次请求的是都会经过
 app.use(function (req, res, next) {

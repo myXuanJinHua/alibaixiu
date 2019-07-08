@@ -42,17 +42,17 @@ module.exports = router.get('/', (req, res) => {
     .get('/admin/users', pageControllers.showAdminUsers)
 
 
-    //判断后台页面获取所有文章的数据接口
+    //获取所有文章的数据
     .get('/admin/getposts', postsControllers.getPosts)
-    //点击删除后的删除数据接口
+    //点击删除后的删除数据根据ID
     .get('/delposts', postsControllers.delpost)
-    //数据的筛选,获取所有分类的数据
+    //获取所有分类的数据
     .get('/getAllCateList', cateControllers.getAllCateList)
 
     //上传文件数据
     .post('/uploadFile', uploadControllers.uploadFile)
     //添加新文章数据
-    .post('/addPostContent', uploadControllers.addPostContent)
+    .post('/addPostContent', uploadControllers.addPostContentp)
 
     //获取评论数据
     .get('/getComments', commentControllers.getCommentsLIst)

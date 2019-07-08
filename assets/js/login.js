@@ -10,7 +10,7 @@ $(function () {
             type: 'post',
             url: '/login',
             beforeSend: function () {
-                console.log('发送之前')
+                // console.log('发送之前')
                 // 判断邮箱: abc13@163.com
                 if (!/\w+[@]\w+[.]\w+/.test(email)) {
                     $('.alert-danger > span').text('邮箱格式不对,请重新输入')

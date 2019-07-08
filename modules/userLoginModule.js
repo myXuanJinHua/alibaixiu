@@ -8,6 +8,7 @@ module.exports = {
         conn.query(sql, (err, result) => {
             // console.log('这是查询邮箱数据出错', err)
             if (err) return callback(err)
+            // console.log(result[0])
             //result:查询返回的是一个数组  而且查询最多只能查到一条记录
             callback(null, result[0])
         })

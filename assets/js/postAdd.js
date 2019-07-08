@@ -35,10 +35,11 @@ $(function () {
             contentType: false,
             success: function (res) {   //把文件上传服务器后,后台会把文件名以储存文件的路径形式响应回来
                 if (res.code == 200) {
+                    console.log('响应回来的', res.img)
                     //把响应回来的文件名存到input 隐藏域内
                     $('[name=feature]').val(res.img)
                     //实现预览
-                    $('.thumbnail').attr('src', '/uploads' + res.img).show()
+                    $('.thumbnail').attr('src', '/uploads/' + res.img).show()
                 }
             }
         })
@@ -55,7 +56,7 @@ $(function () {
         //阻止默认事件
         event.preventDefault()
         //同步富文本框与textarea的数据
-        CKEDITOR.instances.content.updataElement()
+        CKEDITOR.instances.content.updateElement()
         // console.log('富文本框的数据', $('form').serialize())
 
         //把页面表单的数据上传到服务器
@@ -66,6 +67,13 @@ $(function () {
             dataType: 'json',
             success: function (res) {
                 console.log('表单数据上传到服务器之后响应回来的数据', res)
+                if (res.code == 200) {
+                    $('.alert-danger>span').text(res.msg)
+                    $('.alert-danger').fadeIn(500).delay(2000).fadeOut(500)
+                } else {
+                    $('.alert-danger>span').text(res.msg)
+                    $('.alert-danger').fadeIn(500).delay(2000).fadeOut(500)
+                }
             }
         })
 

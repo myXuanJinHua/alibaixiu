@@ -2,11 +2,14 @@
 //引入formidable 第三方模块实现文件上传
 const formidable = require('formidable')
 const path = require('path')
-
+//引入uploadModule模块
+const uploadModules = require('../modules/uploadModules')
 
 module.exports = {
+    // 上传文件
     uploadFile(req, res) {
-        console.log(path)
+        // console.log(path)
+        // console.log(req)
         //创建文件上传对象
         let form = new formidable.IncomingForm()
         // 设置编码
@@ -31,7 +34,7 @@ module.exports = {
             } else {
                 //利用path.basename 截取路径最后的一部分
                 let filename = path.basename(files.img.path)
-                console.log(filename)
+                // console.log(filename)
                 res.json({
                     code: 200,
                     msg: '文件上传成功',
@@ -39,6 +42,25 @@ module.exports = {
                 })
             }
 
+        })
+    },
+    //添加新文章
+    addPostContent(req, res) {
+        let obj = req.body
+        obj.id = null
+        obj.views = 0
+        obj.likes = 0
+        // console.log(req.session)
+        obj.user_id = req.session.currentUser.id
+        uploadModules.addPostContent(obj, (err, data) => {
+            if (err) res.json({
+                code: 400,
+                msg: '文章添加失败'
+            })
+            res.json({
+                code: 200,
+                msg: '文章添加成功'
+            })
         })
     }
 }

@@ -52,11 +52,12 @@ module.exports = router.get('/', (req, res) => {
     //上传文件数据
     .post('/uploadFile', uploadControllers.uploadFile)
     //添加新文章数据
-    .post('/addPostContent', uploadControllers.addPostContentp)
+    .post('/addPostContent', uploadControllers.addPostContent)
 
     //获取评论数据
     .get('/getComments', commentControllers.getCommentsLIst)
-
+    //编辑分类数据
+    .post('/upLoadCate', cateControllers.upLoadCate)
 
 
     //用户登录

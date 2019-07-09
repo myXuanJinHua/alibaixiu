@@ -17,5 +17,20 @@ module.exports = {
                 data: data
             })
         })
+    },
+    upLoadCate(req, res) {
+        let obj = req.body
+        console.log(obj)
+        cateModules.upLoadCate(obj, (err) => {
+            if (err) return res.json({
+                code: 400,
+                msg: '数据编辑失败'
+            })
+            // console.log(data) //data是一个数组  对象的集合
+            res.json({
+                code: 200,
+                msg: '数据编辑成功',
+            })
+        })
     }
 }

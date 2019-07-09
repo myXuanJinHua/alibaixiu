@@ -12,6 +12,7 @@
     <div class="row">
       <div class="col-md-4">
         <form>
+          <input type="hidden" name="id">
           <h2>添加新分类目录</h2>
           <div class="form-group">
             <label for="name">名称</label>
@@ -23,7 +24,8 @@
             <p class="help-block">https://zce.me/category/<strong>slug</strong></p>
           </div>
           <div class="form-group">
-            <button class="btn btn-primary" type="submit">添加</button>
+            <button class="btn btn-primary addbtn" type="submit">添加</button>
+            <button class="btn btn-primary editbtn" type="submit" style="display: none">编辑</button>
           </div>
         </form>
       </div>
@@ -52,17 +54,18 @@
 <%- include('./layout/aside.ejs')%>
 
 <%- include('./layout/footer.ejs')%>
-<script src="/assets/vendors/art-template/lib/template-web.js"></script>
+<script src="/assets/vendors/template/template.js"></script>
 <script type="text/template" id="cateTmp">
-  {{each }}
+  {{each data}}
   <tr>
       <td class="text-center"><input type="checkbox"></td>
       <td>{{$value.name}}</td>
       <td>{{$value.slug}}</td>
       <td class="text-center">
-        <input type="button" class="btn btn-info btn-xs" data-id={{$value.id}}>编辑
-        <input type="button" class="btn btn-danger btn-xs" data-id={{$value.id}}>删除
+        <a href="javascript:;" class="btn btn-info btn-xs btnedit" data-id='{{$value.id}}' data-name='{{$value.name}}' data-slug='{{$value.slug}}'>编辑</a>
+          <a href="javascript:;" class="btn btn-danger btn-xs btndel"  data-id='{{$value.id}}'>删除</a>
       </td>
   </tr>
+  {{/each}}
 </script>
 <script src="/assets/js/categories.js"></script>
